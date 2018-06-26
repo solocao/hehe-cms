@@ -106,7 +106,8 @@ module.exports = {
         });
       }
     }
-  }
+  },
+  plugins: ['~plugins/iview/index.js']
 };
 
 /***/ },
