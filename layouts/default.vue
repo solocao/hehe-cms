@@ -1,5 +1,6 @@
 <template>
   <div>
+    <the-header></the-header>
     <nuxt/>
     <my-footer/>
   </div>
@@ -7,43 +8,43 @@
 
 <script>
 import MyFooter from '../components/Footer.vue'
+import TheHeader from '../components/TheHeader.vue'
 
 export default {
   components: {
-    MyFooter
+    MyFooter,
+    TheHeader
   }
 }
 </script>
 
 <style>
-.container
-{
+.container {
   margin: 0;
   width: 100%;
   padding: 100px 0;
   text-align: center;
 }
 
-.button, .button:visited
-{
+.button,
+.button:visited {
   display: inline-block;
-  color: #3B8070;
+  color: #3b8070;
   letter-spacing: 1px;
   background-color: #fff;
-  border: 2px solid #3B8070;
+  border: 2px solid #3b8070;
   text-decoration: none;
   text-transform: uppercase;
   padding: 15px 45px;
 }
 
-.button:hover, .button:focus
-{
+.button:hover,
+.button:focus {
   color: #fff;
-  background-color: #3B8070;
+  background-color: #3b8070;
 }
 
-.title
-{
+.title {
   color: #505153;
   font-weight: 300;
   font-size: 2.5em;

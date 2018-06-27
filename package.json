@@ -16,7 +16,9 @@
     "iview": "^2.14.3",
     "koa": "^2.4.1",
     "nuxt": "latest",
-    "source-map-support": "^0.4.15"
+    "source-map-support": "^0.4.15",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2"
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",
