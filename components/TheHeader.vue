@@ -1,10 +1,10 @@
 <template>
   <header class="main-header">
-    <div style="height:50px;width:100%;background:blue">
-      网站头部
+    <div class="info">
+      网站头部 搜索相关
     </div>
     <affix class="sidebar-menu" relative-element-selector="#example-content">
-      <div style="height:50px;width:100%;background:yellow">
+      <div class="nav">
         分类栏目
       </div>
     </affix>
@@ -22,17 +22,28 @@
 
   </header>
 </template>
-<style lang="stylus" scoped>
-.main_header {
-  position: fixed;
-  top: 0px;
-  s;
-  left: 0px;
-  width: 100%;
-  background: #022d30;
+<style lang="stylus">
+.main-header {
+  .info {
+    height: 50px;
+    width: 100%;
+    background: white;
+  }
 
-  .main_header {
-    .nav-links {
+  .nav {
+    height: 50px;
+    width: 100%;
+    background: white;
+    box-shadow: 0px 2px 5px rgba(158, 158, 158, 0.15);
+
+    &:before {
+      content: '';
+      display: block;
+      height: 2px;
+      background: linear-gradient(to right, #f3005c, #ffde00);
+    }
+
+    &:hover {
     }
   }
 }
