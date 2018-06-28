@@ -6,10 +6,13 @@
     <affix relative-element-selector="#example-content">
       <div class="nav">
         <ul>
-          <li>首页</li>
-          <li>民心</li>
+          <li>
+            <span>首页</span>
+          </li>
+          <li>
+            <span>明星</span>
+          </li>
         </ul>
-        分类栏目
       </div>
     </affix>
     <nav class="main-nav">
@@ -30,8 +33,6 @@
 @import '../style/var.styl';
 
 .main-header {
-  width: content-max;
-
   .info {
     height: 50px;
     width: 100%;
@@ -40,7 +41,6 @@
 
   .nav {
     height: 50px;
-    width: 100%;
     background: white;
     box-shadow: 0px 2px 5px rgba(158, 158, 158, 0.15);
 
@@ -57,9 +57,20 @@
     ul {
       // 把前面的小圆点点弄没
       list-style: none;
+      width: content-max;
+      height: 100%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
 
       li {
-        float: left;
+        padding-right: 30px;
+
+        span {
+          font-size: 15px;
+          font-style: normal;
+          font-weight: 400;
+        }
       }
     }
   }
