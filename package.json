@@ -18,7 +18,8 @@
     "nuxt": "latest",
     "source-map-support": "^0.4.15",
     "stylus": "^0.54.5",
-    "stylus-loader": "^3.0.2"
+    "stylus-loader": "^3.0.2",
+    "vue-affix": "^0.2.4"
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",

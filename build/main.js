@@ -107,7 +107,7 @@ module.exports = {
       }
     }
   },
-  plugins: ['~plugins/iview/index.js']
+  plugins: ['~plugins/iview/index.js', '~plugins/vue-affix.js']
 };
 
 /***/ },

@@ -1,5 +1,5 @@
 <template>
   <div>
-    hello 我的开始
+    hello
   </div>
 </template>
