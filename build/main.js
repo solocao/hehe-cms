@@ -84,7 +84,7 @@ module.exports = {
   /*
   ** Global CSS
   */
-  css: ['~assets/css/main.css'],
+  css: ['~assets/css/main.css', 'swiper/dist/css/swiper.css'],
   /*
   ** Customize the progress-bar color
   */
@@ -107,7 +107,7 @@ module.exports = {
       }
     }
   },
-  plugins: ['~plugins/iview/index.js', '~plugins/vue-affix.js']
+  plugins: ['~plugins/iview/index.js', '~plugins/vue-affix.js', { src: '~/plugins/swiper.js', ssr: false }]
 };
 
 /***/ },

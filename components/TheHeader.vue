@@ -15,18 +15,6 @@
         </ul>
       </div>
     </affix>
-    <nav class="main-nav">
-      <ul class="nav-links">
-        <nuxt-link to="/" tag="li">
-          <a>所有</a>
-        </nuxt-link>
-        <nuxt-link to="/about" tag="li">
-          <a>关于</a>
-        </nuxt-link>
-      </ul>
-
-    </nav>
-
   </header>
 </template>
 <style lang="stylus">
