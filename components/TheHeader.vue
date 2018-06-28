@@ -3,8 +3,12 @@
     <div class="info">
       网站头部 搜索相关
     </div>
-    <affix class="sidebar-menu" relative-element-selector="#example-content">
+    <affix relative-element-selector="#example-content">
       <div class="nav">
+        <ul>
+          <li>首页</li>
+          <li>民心</li>
+        </ul>
         分类栏目
       </div>
     </affix>
@@ -23,7 +27,11 @@
   </header>
 </template>
 <style lang="stylus">
+@import '../style/var.styl';
+
 .main-header {
+  width: content-max;
+
   .info {
     height: 50px;
     width: 100%;
@@ -44,6 +52,15 @@
     }
 
     &:hover {
+    }
+
+    ul {
+      // 把前面的小圆点点弄没
+      list-style: none;
+
+      li {
+        float: left;
+      }
     }
   }
 }
