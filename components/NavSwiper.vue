@@ -51,12 +51,12 @@ export default {
 
 <style lang="stylus" scoped>
 .my-swiper {
-  height: 300px;
-  width: 300px;
+  height: 360px;
+  width: 100%;
 
   .swiper-wrapper {
-    height: 300px;
-    width: 300px;
+    height: 100%;
+    width: 100%;
 
     img {
       width: 100%;
