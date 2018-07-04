@@ -43,20 +43,32 @@
 
       <!-- 文章导读 -->
       <Row class="news-guide">
+        <Col span="16">
         <div class="title">
           精选导读
         </div>
-        <Row>
-          <Col span="16">
-          <div class="item">
+        <div class="content">
+          <div class="item_wrap" v-for="i in 6">
+            <Row class="item">
+              <Col span="8" style="height:100%">
+              <img src="http://www.qiye.gov.cn/d/file/2018-06-11/54f2712bf5ecb0f4b502db2275c22bdf.jpg" alt="">
+              </Col>
+              <Col span="16">
+              <div class="title">
+                6月9日——9月9日一起来High
+              </div>
+              <div class="content">
+                深圳世界之窗点燃鹏城热情，冰爽啤酒节引爆夏日狂欢 激情主持、风情热舞、…
 
+              </div>
+              </Col>
+
+            </Row>
           </div>
-          <div class="item">
-
-          </div>
-          </Col>
-
-        </Row>
+        </div>
+        </Col>
+        <Col span="8">
+        </Col>
 
       </Row>
 
@@ -145,10 +157,43 @@ export default {
     margin-top: 10px;
     background: purple;
 
-    .item {
-      height: 50%;
+    .title {
+      font-size: 16px;
+      font-weight: bold;
+      height: 40px;
+      display: flex;
+      align-items: center;
+    }
+
+    .content {
+      height: 360px;
+      background: red;
+    }
+
+    .item_wrap {
+      height: 120px;
       width: 50%;
-      background: yellow;
+      padding: 2px;
+      float: left;
+
+      .item {
+        background: yellow;
+        width: 100%;
+        height: 100%;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+
+        .title {
+          height: 40px;
+        }
+
+        .content {
+          height: 100%;
+        }
+      }
     }
   }
 }
