@@ -74,33 +74,22 @@
 
       <!-- 文章热门 -->
       <Row class="news-hot">
-        <div>
-          文章标题
-        </div>
-        <Row class="item" style="height:160px">
-          <Col span="4">
-          <img src="http://www.qiye.gov.cn/d/file/2018-06-27/475b6b662b592c119718d32e7977e7c3.jpg" alt="" style="width:100%;height:100%">
-          </Col>
-          <Col span="20">
-          <div class="title">
-            头部标题
-          </div>
-          <div class="content">
-            文章内容
-          </div>
-
-          </Col>
-        </Row>
-
+        <Col span="16">
+        <hot-recomment></hot-recomment>
+        </Col>
+        <Col span="8">
+        </Col>
       </Row>
     </div>
   </section>
 </template>
 <script>
 import NavSwiper from '../components/NavSwiper.vue'
+import HotRecomment from '../components/HotRecomment.vue'
 export default {
   components: {
-    NavSwiper
+    NavSwiper,
+    HotRecomment
   }
 
 }
