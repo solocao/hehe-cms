@@ -39,5 +39,5 @@ module.exports = {
       }
     }
   },
-  plugins: ['~plugins/iview/index.js', '~plugins/vue-affix.js', { src: '~/plugins/swiper.js', ssr: false }]
+  plugins: ['~plugins/iview/index.js', '~plugins/vue-affix.js', { src: '~/plugins/swiper.js', ssr: false }, '~plugins/api/index.js']
 }

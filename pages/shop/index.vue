@@ -25,10 +25,6 @@ export default {
   data() {
     return {
       highprice: 300
-      // products:[{
-      //   sale:400,
-
-      // },{}]
     };
   },
   computed: {
@@ -40,9 +36,24 @@ export default {
       );
     }
   },
+  methods: {
+    // 产品列表
+    async productList() {
+      const params = {
+        url: 'product/list',
+        payload: {}
+      }
+      const result = await this.post(params)
+      console.log('看看结果')
+      console.log(result)
+      console.log(result.data)
+      this.tableData1 = result.data
+    }
+  },
   mounted() {
     console.log('k俺看')
     console.log(this.$store)
+    this.productList()
   }
 };
 </script>

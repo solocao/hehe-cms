@@ -17,6 +17,7 @@
     "koa": "^2.4.1",
     "node-sass": "^4.9.2",
     "nuxt": "latest",
+    "qs": "^6.5.2",
     "sass": "^1.9.0",
     "sass-loader": "^7.0.3",
     "source-map-support": "^0.4.15",
