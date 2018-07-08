@@ -19,6 +19,7 @@ module.exports = {
         named: 'never'
       }
     ],
+    'semi': 0,
   },
   globals: {}
 }
