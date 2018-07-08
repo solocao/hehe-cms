@@ -25,6 +25,10 @@ export default {
   data() {
     return {
       highprice: 300
+      // products:[{
+      //   sale:400,
+
+      // },{}]
     };
   },
   computed: {
@@ -35,6 +39,10 @@ export default {
           : el.price < this.highprice
       );
     }
+  },
+  mounted() {
+    console.log('k俺看')
+    console.log(this.$store)
   }
 };
 </script>
