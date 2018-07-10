@@ -37,6 +37,7 @@ body {
 .wrapper {
   min-height: 100vh;
   margin-bottom: -60px;
+  background: #e7eefa;
 }
 
 .footer,

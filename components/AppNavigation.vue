@@ -2,8 +2,8 @@
   <div class="navarea-shop">
     <div class="nav">
       <div class="capsule">
-        <nuxt-link exact to="/">
-          老黑站
+        <nuxt-link class="title" exact to="/">
+          潮鞋前线
         </nuxt-link>
         <ul>
           <nuxt-link to="/women">
@@ -16,15 +16,26 @@
             <li>其他</li>
           </nuxt-link>
         </ul>
-        <nuxt-link to="/cart">
-          <div class="cartitem">
-            <div v-if="cartTotal > 0" class="cartcount">{{ cartTotal }}</div>
-            <span style="width:50px;height:50px">
-              <Icon type="ios-cart" size=40></Icon>
-            </span>
-            <shop-cart></shop-cart>
-          </div>
-        </nuxt-link>
+        <div>
+
+          <nuxt-link to="/cart">
+            <div class="cartitem">
+              <div v-if="cartTotal > 0" class="cartcount">{{ cartTotal }}</div>
+              <span style="width:40px;height:40px">
+                <Icon type="ios-cart" size=30></Icon>
+              </span>
+              <shop-cart v-show="false"></shop-cart>
+            </div>
+          </nuxt-link>
+          <nuxt-link to="/cart">
+            <div class="cartitem">
+              <div v-if="cartTotal > 0" class="cartcount">{{ cartTotal }}</div>
+              <span style="width:40px;height:40px">
+                <Icon type="person" size=30></Icon>
+              </span>
+            </div>
+          </nuxt-link>
+        </div>
       </div>
     </div>
     <shop-header></shop-header>
@@ -55,13 +66,19 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    .title {
+      font-size: 18px;
+      font-weight: bold;
+    }
   }
 
   .nav {
     width: 100vw;
     height: 60px;
     background: #fdf1f136;
-    background: grey;
+    display: flex;
+    align-items: center;
   }
 
   ul {

@@ -1,10 +1,13 @@
 <template>
-  <div class="item">
+  <div class="item" style="width:290px;height:340px">
     <p>{{ item.name }}</p>
     <span class="salepill" v-if="item.sale">Sale</span>
-    <img :src="`https://shoppity.azurewebsites.net/${item.img}`" :alt="`Image of ${item.name}`">
-    <p>{{ item.price | usdollar }}</p>
-    <button class="add" @click="addItem">Add Item</button>
+    <img style="width:200px;height:180px" :src="item.img_list[0]" :alt="`Image of ${item.name}`">
+    <p>{{ item.sale_price | usdollar }}</p>
+    <div class="btn-group">
+      <button class="btn-add" @click="addItem">查看</button>
+      <button class="btn-add" @click="addItem">加入购物车</button>
+    </div>
   </div>
 </template>
 
@@ -33,7 +36,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="stylus" scoped>
 .item {
   border-radius: 5px;
   padding: 20px;
@@ -43,23 +46,50 @@ export default {
   justify-content: center;
   align-items: center;
   position: relative;
+
+  p {
+    font-size: 18px;
+  }
+
+  .salepill {
+    background: rgb(232, 35, 25);
+    color: white;
+    font-family: 'Barlow', sans-serif;
+    position: absolute;
+    right: 30px;
+    top: 60px;
+    padding: 2px 10px 4px;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 700;
+    border-radius: 1000px;
+  }
+
+  .btn-group {
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
-.salepill {
-  background: rgb(232, 35, 25);
-  color: white;
-  font-family: "Barlow", sans-serif;
-  position: absolute;
-  right: 30px;
-  top: 60px;
-  padding: 2px 10px 4px;
-  text-transform: uppercase;
+.btn-add {
+  padding: 5px 10px;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 500;
   border-radius: 1000px;
-}
+  width: 100px;
+  cursor: pointer;
+  background: #fff;
+  color: #3e64ea;
+  border: 1px solid #3e64ea;
+  font-family: Barlow, sans-serif;
+  text-transform: uppercase;
+  margin: 10px;
+  -webkit-transition: all 0.15s ease-out;
+  transition: all 0.15s ease-out;
 
-p {
-  font-size: 18px;
+  &:hover {
+    background: #3e64ea;
+    color: white;
+  }
 }
 </style>
