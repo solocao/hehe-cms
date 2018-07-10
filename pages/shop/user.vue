@@ -23,6 +23,7 @@
       </Col>
       <Col class="shop-tab" span="20">
       <shop-list></shop-list>
+      <shop-address></shop-address>
       </Col>
     </row>
   </div>
@@ -30,11 +31,13 @@
 <script>
 import ShopOrder from '../../components/ShopOrder.vue';
 import ShopList from '../../components/ShopList.vue';
+import ShopAddress from '../../components/ShopAddress.vue';
 export default {
   layout: 'shop',
   components: {
     ShopOrder,
-    ShopList
+    ShopList,
+    ShopAddress
   }
 
 }

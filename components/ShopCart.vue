@@ -16,27 +16,31 @@
             白色
           </div>
           <div class="price">
+            <span>¥</span>
             <span>4500</span>
-            <span>*1</span>
           </div>
+        </div>
+        <div class="cart-operate">
+          <Button type="ghost" size="small" shape="circle" icon="android-remove"></Button>
+          <span>1</span>
+          <Button type="ghost" size="small" shape="circle" icon="android-add"></Button>
         </div>
 
       </div>
-      <div class="footer">
-        <div>
-          <div class="count">
-            共2件商品
-          </div>
-          <div class="price">
-            <span>合计</span>
-            <span>5009元</span>
-          </div>
+      <Row class="cart-footer">
+        <Col span="16">
+        <div class="count">
+          共2件商品
         </div>
-        <div>
-          <button>去购物车</button>
+        <div class="price">
+          <span>合计</span>
+          <span>5009元</span>
         </div>
-
-      </div>
+        </Col>
+        <Col span="8">
+        <button class="shop-btn">去购物车</button>
+        </Col>
+      </Row>
     </div>
   </div>
 </template>
@@ -51,7 +55,6 @@ export default {
   position: absolute;
   right: 40px;
   width: 360px;
-  min-height: 300px;
   background: white;
   display: flex;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
@@ -82,6 +85,7 @@ export default {
         margin-top: -6px;
         margin-left: 18px;
         height: 80px;
+        width: 168px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -97,9 +101,18 @@ export default {
         }
 
         .price {
-          font-size: 15px;
+          font-size: 16px;
           font-weight: bold;
           color: rgb(232, 35, 25);
+        }
+      }
+
+      .cart-operate {
+        float: right;
+
+        span {
+          font-size: 14px;
+          margin: 0px 6px;
         }
       }
     }
@@ -109,17 +122,40 @@ export default {
   }
 
   // 底部栏目
-  .footer {
-    height: 60px;
+  .cart-footer {
+    height: 70px;
     width: 100%;
     background: #F7F7F7;
     display: flex;
     justify-content: space-around;
+    align-items: center;
+    padding-left: 12px;
 
     .count {
     }
 
     .price {
+      font-size: 16px;
+      font-weight: bold;
+      color: rgb(232, 35, 25);
+    }
+
+    .shop-btn {
+      padding: 5px 10px;
+      font-size: 13px;
+      font-weight: 500;
+      border-radius: 1000px;
+      width: 84px;
+      cursor: pointer;
+      background: #fff;
+      color: #3e64ea;
+      border: 1px solid #3e64ea;
+      font-family: Barlow, sans-serif;
+      text-transform: uppercase;
+      margin: 10px;
+      -webkit-transition: all 0.15s ease-out;
+      transition: all 0.15s ease-out;
+      float: right;
     }
   }
 }
