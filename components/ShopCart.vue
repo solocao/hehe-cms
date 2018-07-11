@@ -1,31 +1,30 @@
 <template>
   <div class="shop-cart">
-    <div class="empty">
-
+    <div class="empty" v-show="cart.length==0">
+      你的购物车空空如野
     </div>
-    <div class="detail">
-      <div class="item">
+    <div class="detail" v-show="cart.length>0">
+      <div class="item" v-for="item in $store.state.cart" :key="item.id">
         <div>
           <img src="http://www.aaebike.com:9090/data/img/2ada81_1513910170835.jpg" alt="">
         </div>
         <div class="info">
           <div class="name">
-            阿迪达斯限量
+            {{item.name}}
           </div>
           <div class="type">
             白色
           </div>
           <div class="price">
             <span>¥</span>
-            <span>4500</span>
+            <span>{{item.price}}</span>
           </div>
         </div>
         <div class="cart-operate">
-          <Button type="ghost" size="small" shape="circle" icon="android-remove"></Button>
-          <span>1</span>
-          <Button type="ghost" size="small" shape="circle" icon="android-add"></Button>
+          <Button @click.native="minusItem(item)" type="ghost" size="small" shape="circle" icon="android-remove"></Button>
+          <span>{{item.count}}</span>
+          <Button @click.native="addItem(item)" type="ghost" size="small" shape="circle" icon="android-add"></Button>
         </div>
-
       </div>
       <Row class="cart-footer">
         <Col span="16">
@@ -45,7 +44,20 @@
   </div>
 </template>
 <script>
+import { mapState } from 'vuex';
 export default {
+  computed: {
+    ...mapState(['cart'])
+  },
+
+  methods: {
+    addItem(item) {
+      this.$store.commit('addItem', item);
+    },
+    minusItem(item) {
+      this.$store.commit('minusItem', item);
+    }
+  }
 
 }
 </script>
@@ -61,6 +73,13 @@ export default {
 
   // 空购物车
   .empty {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weigth: bold;
   }
 
   // 详情

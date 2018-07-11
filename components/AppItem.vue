@@ -5,7 +5,7 @@
     <img style="width:200px;height:180px" :src="item.img_list[0]" :alt="`Image of ${item.name}`">
     <p>{{ item.sale_price | usdollar }}</p>
     <div class="btn-group">
-      <button class="btn-add" @click="go(item)">查看</button>
+      <button class="btn-add" @click="minusItem">查看</button>
       <button class="btn-add" @click="addItem">加入购物车</button>
     </div>
   </div>
@@ -31,6 +31,9 @@ export default {
   methods: {
     addItem() {
       this.$store.commit('addItem', this.item);
+    },
+    minusItem() {
+      this.$store.commit('minusItem', this.item);
     },
     go(item) {
       const { _id } = item

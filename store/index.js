@@ -4,7 +4,22 @@ const createStore = () => {
   return new Vuex.Store({
     state: {
       cartTotal: 0,
-      cart: {},
+      cart: [
+        {
+          id: '13124214',
+          name: 'Khaki Suede Polish Work Boots',
+          price: 149.99,
+          count: 1,
+          img: 'http://www.aaebike.com:9090/data/img/2ada81_1513910170835.jpg'
+        },
+        {
+          id: '34312',
+          name: 'Khaki Suede Polish Work Boots',
+          price: 149.99,
+          count: 1,
+          img: 'http://www.aaebike.com:9090/data/img/2ada81_1513910170835.jpg'
+        }
+      ],
       sale: false,
       products: [
         {
@@ -121,13 +136,31 @@ const createStore = () => {
         state.cart = {};
       },
       addItem: (state, item) => {
-        state.cartTotal++;
-        if (item.name in state.cart) {
-          state.cart[item.name].count++;
+        const { id, name, price } = item
+        const index = state.cart.findIndex(x => x.id === id)
+        if (index > -1) {
+          console.log(state.cart[index].count)
+          state.cart[index].count = state.cart[index].count + 1
         } else {
-          let stateItem = Object.assign({}, item);
-          stateItem.count = 1;
-          state.cart[item.name] = stateItem;
+          state.cart.push(
+            {
+              id: id,
+              name: name,
+              price: price,
+              count: 1,
+              img: 'http://www.aaebike.com:9090/data/img/2ada81_1513910170835.jpg'
+            }
+          )
+        }
+      },
+      minusItem: (state, item) => {
+        const { id } = item
+        const index = state.cart.findIndex(x => x.id === id)
+        const count = state.cart[index].count
+        if (count === 1) {
+          state.cart.splice(index, 1)
+        } else {
+          state.cart[index].count = count - 1
         }
       }
     }

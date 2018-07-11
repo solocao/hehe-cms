@@ -18,17 +18,17 @@
         </ul>
         <div>
           <!-- 购物车图标 -->
-          <nuxt-link to="/cart">
-            <div class="cartitem" @mouseover="showCart=true" @mouseout="showCart=true">
-              <div v-if="cartTotal > 0" class="cartcount">{{ cartTotal }}</div>
-              <span style="width:40px;height:40px">
+          <div class="cartitem" @mouseover="showCart=true" @mouseout="showCart=false">
+            <div v-if="cartTotal > 0" class="cartcount">{{ cartTotal }}</div>
+            <span style="width:40px;height:40px">
+              <nuxt-link to="/cart">
                 <Icon type="ios-cart" size=30></Icon>
-              </span>
-              <transition name="slide-fade">
-                <shop-cart v-show="showCart"></shop-cart>
-              </transition>
-            </div>
-          </nuxt-link>
+              </nuxt-link>
+            </span>
+            <transition name="slide-fade">
+              <shop-cart v-show="showCart"></shop-cart>
+            </transition>
+          </div>
           <nuxt-link to="/cart">
             <div class="cartitem">
               <div v-if="cartTotal > 0" class="cartcount">{{ cartTotal }}</div>
@@ -49,7 +49,7 @@ import ShopHeader from './ShopHeader.vue'
 export default {
   data() {
     return {
-      showCart: true
+      showCart: false
     }
   },
   components: {
