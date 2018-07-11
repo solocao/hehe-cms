@@ -3,27 +3,34 @@
     <row>
       <Col span="4">
       <div class="user-shop-box">
-        <div class="user-shop-header">
-          caowei
-        </div>
-        <div class="user-shop-container">
-          <ul>
-            <li>
-              <span>我的订单</span>
-            </li>
-            <li>
-              <span>账户资料</span>
-            </li>
-            <li>
-              <span>收获地址</span>
-            </li>
-          </ul>
-        </div>
+        <Card :bordered="false">
+          <p slot="title">我的</p>
+          <div class="user-shop-container">
+            <ul>
+              <li>
+                <span>我的购物车</span>
+              </li>
+              <li>
+                <span>我的订单</span>
+              </li>
+              <li>
+                <span>账户资料</span>
+              </li>
+              <li>
+                <span>收获地址</span>
+              </li>
+            </ul>
+          </div>
+        </Card>
+
       </div>
       </Col>
       <Col class="shop-tab" span="20">
-      <shop-list></shop-list>
-      <shop-address></shop-address>
+      <Card :bordered="false">
+        <p slot="title">我的订单</p>
+        <shop-list></shop-list>
+      </Card>
+      <!-- <shop-address></shop-address> -->
       </Col>
     </row>
   </div>
@@ -63,7 +70,7 @@ export default {
         list-style: none;
         position: relative;
         height: 48px;
-        border-top: 1px solid #ebebeb;
+        border-bottom: 1px solid #ebebeb;
         line-height: 48px;
         font-style: normal;
         text-decoration: none;
@@ -82,6 +89,7 @@ export default {
   }
 
   .shop-tab {
+    padding-left: 20px;
   }
 }
 </style>

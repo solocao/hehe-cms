@@ -1,13 +1,14 @@
 <template>
   <header class="main-header">
     <affix relative-element-selector="#example-content">
+      <div class="linear-bar"></div>
       <div class="nav">
         <ul>
           <li>
-            <span>首页</span>
+            <span>鞋子</span>
           </li>
           <li>
-            <span>明星</span>
+            <span>衣服</span>
           </li>
         </ul>
       </div>

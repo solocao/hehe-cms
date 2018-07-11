@@ -19,7 +19,6 @@
     </Row>
     <Row class="shop-order-item">
       <Col span="12">
-
       <img src="http://www.aaebike.com:9090/data/img/b0ea1f_1513915289515.jpg" alt="">
       <div>
         <span> 2018-02-12 22:01:13 订单号： 229880</span>
@@ -40,6 +39,7 @@
       </Col>
     </Row>
     哈哈哈 是个list
+
   </div>
 </template>
 <script>
@@ -50,13 +50,12 @@ export default {
 
 <style lang="stylus">
 .shop-order-list {
-  padding-left: 20px;
-
   .shop-order-title {
     display: flex;
     align-items: center;
     height: 36px;
-    background: #eee;
+    border-bottom: 1px solid #ebebeb;
+    font-size: 13px;
   }
 
   .shop-order-item {
@@ -69,7 +68,7 @@ export default {
       width: 80px;
       height: 80px;
       border: 1px solid #ebebeb;
-      margin: 0px 20px;
+      margin-right: 20px;
       float: left;
     }
 

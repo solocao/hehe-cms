@@ -1,6 +1,6 @@
 <template>
   <div class="navarea-shop">
-    <div class="nav">
+    <div class="shop-nav">
       <div class="capsule">
         <nuxt-link class="title" exact to="/">
           潮鞋前线
@@ -22,24 +22,26 @@
             <div v-if="cartTotal > 0" class="cartcount">{{ cartTotal }}</div>
             <span style="width:40px;height:40px">
               <nuxt-link to="/cart">
-                <Icon type="ios-cart" size=30></Icon>
+                <Icon type="ios-cart" size=30 color="#7F7F7F"></Icon>
               </nuxt-link>
             </span>
             <transition name="slide-fade">
               <shop-cart v-show="showCart"></shop-cart>
             </transition>
           </div>
-          <nuxt-link to="/cart">
-            <div class="cartitem">
+          <div class="cartitem">
+            <nuxt-link to="/shop/user">
               <div v-if="cartTotal > 0" class="cartcount">{{ cartTotal }}</div>
               <span style="width:40px;height:40px">
-                <Icon type="person" size=30></Icon>
+                <Icon type="person" size=30 color="#7F7F7F"></Icon>
               </span>
-            </div>
-          </nuxt-link>
+            </nuxt-link>
+          </div>
+
         </div>
       </div>
     </div>
+
     <shop-header></shop-header>
   </div>
 </template>
@@ -79,12 +81,13 @@ export default {
     }
   }
 
-  .nav {
+  .shop-nav {
     width: 100vw;
     height: 60px;
-    background: #fdf1f136;
+    background: white;
     display: flex;
     align-items: center;
+    border-bottom: 1px solid linear-gradient(to right, #f3005c, #ffde00);
   }
 
   ul {
@@ -107,6 +110,7 @@ export default {
   .cartitem {
     position: relative;
     float: right;
+    margin-left: 15px;
   }
 
   .cartcount {
