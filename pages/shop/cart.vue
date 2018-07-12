@@ -94,13 +94,17 @@ import { mapState } from 'vuex';
 export default {
   layout: 'shop',
   computed: {
-    ...mapState(['cart']),
+    ...mapState(['cart', 'user']),
     totalPrice() {
       let totalPrice = 0
       this.cart.forEach((x) => {
         totalPrice = totalPrice + x.price * x.count
       })
       return totalPrice
+    },
+    address() {
+      const address = this.uers.addresses.find(x => x.active === 1)
+      return address
     }
   },
   methods: {

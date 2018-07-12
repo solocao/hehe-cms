@@ -44,7 +44,7 @@
           <Col span="6">
           <div>
             <Button class="shop-address-btn" @click.native="addressDefault(item.index)" type="ghost" size="small">
-              设为默认{{item.active}}
+              {{address}} 设为默认{{item.active}}
             </Button>
             <Button class="shop-address-btn" @click.native="handleUpdate(item)" type="ghost" size="small">
               修改

@@ -1,5 +1,4 @@
 import Vuex from 'vuex';
-
 const createStore = () => {
   return new Vuex.Store({
     state: {
@@ -126,6 +125,14 @@ const createStore = () => {
       sale: state => filter(state.products, 'sale', true)
     },
     mutations: {
+      set(state, params) {
+        const keys = Object.keys(params);
+        keys.forEach(x => {
+          const val = params[x];
+          // db.set(x, val).write();
+          state[x] = val;
+        });
+      },
       switchSale: state => {
         state.sale = !state.sale;
       },
