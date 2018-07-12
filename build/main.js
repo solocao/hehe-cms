@@ -107,7 +107,7 @@ module.exports = {
       }
     }
   },
-  plugins: ['~plugins/iview/index.js', '~plugins/vue-affix.js', { src: '~/plugins/swiper.js', ssr: false }, '~plugins/api/index.js']
+  plugins: ['~plugins/iview/index.js', '~plugins/vue-affix.js', { src: '~/plugins/swiper.js', ssr: false }, '~plugins/api/index.js', { src: '~/plugins/localStorage.js', ssr: false }]
 };
 
 /***/ },

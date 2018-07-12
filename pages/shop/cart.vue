@@ -69,7 +69,7 @@
           </Col>
         </Row>
         <Row style="margin-top:12px">
-          <Col span="12" class="cart-address">
+          <Col span="12" class="cart-address"> {{address}}
           <Row> 姓名：曹伟 手机：17768118595</Row>
           <Row>
             多伦多失去
@@ -103,7 +103,10 @@ export default {
       return totalPrice
     },
     address() {
-      const address = this.uers.addresses.find(x => x.active === 1)
+      if (this.user === undefined) {
+        return null
+      }
+      const address = this.user.addresses.find(x => x.active === 1)
       return address
     }
   },
