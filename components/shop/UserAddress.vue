@@ -5,10 +5,10 @@
         <Icon type="location"></Icon>
         地址
       </p>
-      <a href="#" slot="extra" @click.prevent="changeLimit">
-        <Button slot="extra" class="shop-address-btn" @click.native="minusItem(item)" type="ghost" size="small">新增
-        </Button>
-      </a>
+
+      <Button slot="extra" class="shop-address-btn" @click="mode='add'" type="ghost" size="small">新增
+      </Button>
+
       <div class="cart-container">
         <Row class="cart-title">
           <Col span="12">
@@ -43,10 +43,10 @@
 
           <Col span="6">
           <div>
-            <Button class="shop-address-btn" @click.native="minusItem(item)" type="ghost" size="small">
-              设为默认
+            <Button class="shop-address-btn" @click.native="addressDefault(item.index)" type="ghost" size="small">
+              设为默认{{item.active}}
             </Button>
-            <Button class="shop-address-btn" @click.native="minusItem(item)" type="ghost" size="small">
+            <Button class="shop-address-btn" @click.native="handleUpdate(item)" type="ghost" size="small">
               修改
             </Button>
             <Button class="shop-address-btn" @click.native="addItem(item)" type="ghost" size="small">
@@ -57,6 +57,19 @@
         </Row>
       </div>
     </Card>
+    <Modal v-model="addressModel" :title="modelTitle" @on-ok="ok" @on-cancel="cancel">
+      <Form :model="form" label-position="top">
+        <FormItem label="收货人">
+          <Input v-model="form.name"></Input>
+        </FormItem>
+        <FormItem label="联系电话">
+          <Input v-model="form.mobile"></Input>
+        </FormItem>
+        <FormItem label="地址">
+          <Input v-model="form.address"></Input>
+        </FormItem>
+      </Form>
+    </Modal>
 
   </div>
 </template>
@@ -66,11 +79,32 @@ export default {
   layout: 'shop',
   data() {
     return {
-      addresses: []
+      mode: null,
+      addresses: [],
+      form: {
+        address: null,
+        name: null,
+        mobile: null
+      }
     }
   },
   computed: {
     ...mapState(['cart']),
+    addressModel() {
+      if (this.mode === null) {
+        return false
+      } else {
+        return true
+      }
+    },
+    modelTitle() {
+      if (this.mode === 'add') {
+        return '新增'
+      }
+      if (this.mode === 'update') {
+        return '编辑'
+      }
+    },
     totalPrice() {
       let totalPrice = 0
       this.cart.forEach((x) => {
@@ -92,11 +126,80 @@ export default {
       console.log(result)
     },
 
+    ok() {
+      if (this.mode === 'add') {
+        this.addressAdd()
+      }
+      if (this.mode === 'update') {
+        this.addressUpdate()
+      }
+
+      this.mode = null
+    },
+    cancel() {
+      this.mode = null
+    },
+
     addItem(item) {
       this.$store.commit('addItem', item);
     },
     minusItem(item) {
       this.$store.commit('minusItem', item);
+    },
+    async addressAdd() {
+      const { name, mobile, address } = this.form
+      const params = {
+        url: 'address/add',
+        payload: {
+          name: name,
+          mobile: mobile,
+          address: address
+        },
+        auth: true
+      }
+      const result = await this.post(params)
+      console.log(result)
+      this.addressList()
+    },
+    addressRemove() {
+
+    },
+
+    async  addressDefault(index) {
+      const params = {
+        url: 'address/update',
+        payload: {
+          index,
+          active: 1
+        },
+        auth: true
+      }
+      const result = await this.post(params)
+      console.log(result)
+      this.addressList()
+    },
+    async addressUpdate() {
+      const { index, name, mobile, address } = this.form
+      const params = {
+        url: 'address/update',
+        payload: {
+          index,
+          name,
+          mobile,
+          address
+        },
+        auth: true
+      }
+      const result = await this.post(params)
+      console.log(result)
+      this.addressList()
+    },
+    handleUpdate(item) {
+      this.mode = 'update'
+      this.form.name = item.name
+      this.form.mobile = item.mobile
+      this.form.address = item.address
+      this.form.index = item.index
     }
   },
   mounted() {
