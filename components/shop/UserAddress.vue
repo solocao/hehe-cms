@@ -1,88 +1,59 @@
 <template>
-  <div class="shop-cart-wrapper">
+  <div class="shop-user-address">
     <Card>
       <p slot="title">
         <Icon type="location"></Icon>
-        购物车清单
+        地址
       </p>
       <a href="#" slot="extra" @click.prevent="changeLimit">
-        <Icon type="ios-loop-strong"></Icon>
-        刷新
+        <Button slot="extra" class="shop-address-btn" @click.native="minusItem(item)" type="ghost" size="small">新增
+        </Button>
       </a>
       <div class="cart-container">
         <Row class="cart-title">
           <Col span="12">
-          <span>商品信息</span>
+          <span>地址</span>
           </Col>
           <Col span="3">
-          <span>单价</span>
+          <span>姓名</span>
           </Col>
           <Col span="3">
-          <span>数量</span>
+          <span>手机</span>
           </Col>
-          <Col span="3">
-          <span>小计</span>
-          </Col>
-          <Col span="3">
+
+          <Col span="6">
           <span>操作</span>
           </Col>
         </Row>
-        <Row class="cart-item" v-for="item in cart" :key="item.id">
+        <Row class="cart-item" v-for="item in addresses" :key="item.index">
           <Col span="12">
           <div class="cart-info">
-            <!-- {{item}} -->
-            <img :src="item.img" alt="">
             <div>
-              <span>{{item.name}}</span>
+              <span>{{item.address}}</span>
             </div>
           </div>
           </Col>
           <Col span="3">
           <div>
-            <span>$</span>
-            <span>{{item.price}}</span>
+            <span>{{item.name}}</span>
           </div>
           </Col>
-          <Col span="3">
-          <div class="cart-operate">
-            <Button @click.native="minusItem(item)" type="ghost" size="small" shape="circle" icon="android-remove"></Button>
-            <span>{{item.count}}</span>
-            <Button @click.native="addItem(item)" type="ghost" size="small" shape="circle" icon="android-add"></Button>
-          </div>
+          <Col span="3"> {{item.mobile}}
           </Col>
-          <Col span="3">
-          <span>小计</span>
-          </Col>
-          <Col span="3">
+
+          <Col span="6">
           <div>
-            <Button type="ghost" size="small" shape="circle" icon="android-close"></Button>
+            <Button class="shop-address-btn" @click.native="minusItem(item)" type="ghost" size="small">
+              设为默认
+            </Button>
+            <Button class="shop-address-btn" @click.native="minusItem(item)" type="ghost" size="small">
+              修改
+            </Button>
+            <Button class="shop-address-btn" @click.native="addItem(item)" type="ghost" size="small">
+              删除
+            </Button>
           </div>
           </Col>
-        </Row>
-        <Row class="cart-title">
-          <Col span="12">
-          <span>收货地址</span>
-          <Button size="small" type="ghost">修改收货地址</Button>
-          </Col>
-          <Col span="12">
-          <span>总价</span>
-          </Col>
-        </Row>
-        <Row style="margin-top:12px">
-          <Col span="12" class="cart-address">
-          <Row> 姓名：曹伟 手机：17768118595</Row>
-          <Row>
-            多伦多失去
-          </Row>
-          </Col>
-          <Col span="12">
-          <span class="big-price">
-            {{totalPrice}}
-          </span>
-          </Col>
-        </Row>
-        <Row class="cart-footer">
-          <button text="现在购买" class="btn-shop" style="float:right">立即下单</button>
         </Row>
       </div>
     </Card>
@@ -93,6 +64,11 @@
 import { mapState } from 'vuex';
 export default {
   layout: 'shop',
+  data() {
+    return {
+      addresses: []
+    }
+  },
   computed: {
     ...mapState(['cart']),
     totalPrice() {
@@ -104,19 +80,34 @@ export default {
     }
   },
   methods: {
+    async addressList() {
+      const params = {
+        url: 'address/list',
+        payload: {},
+        auth: true
+      }
+      const result = await this.get(params)
+      this.addresses = result.data
+      console.log('看看结果')
+      console.log(result)
+    },
+
     addItem(item) {
       this.$store.commit('addItem', item);
     },
     minusItem(item) {
       this.$store.commit('minusItem', item);
     }
+  },
+  mounted() {
+    this.addressList()
   }
 
 }
 </script>
 
 <style lang="stylus">
-.shop-cart-wrapper {
+.shop-user-address {
   width: 100%;
   margin: 0 auto;
 
@@ -140,7 +131,7 @@ export default {
     .cart-item {
       position: relative;
       z-index: 1;
-      line-height: 100px;
+      line-height: 80px;
       font-size: 12px;
       background: white;
       border-bottom: 1px solid #dbdbdb;
@@ -157,13 +148,6 @@ export default {
           border-radius: 3px;
           border: 1px solid rgba(0, 0, 0, 0.06);
           box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.06);
-        }
-      }
-
-      .cart-operate {
-        span {
-          font-size: 14px;
-          margin: 0px 6px;
         }
       }
     }
@@ -210,5 +194,9 @@ export default {
   font-size: 20px;
   font-weight: bold;
   color: red;
+}
+
+.shop-address-btn {
+  margin-right: 5px;
 }
 </style>

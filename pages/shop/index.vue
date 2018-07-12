@@ -4,7 +4,7 @@
     <div class="contain">
       <app-sidebar :pricerange.sync="highprice" />
       <transition-group name="items" tag="section" class="content">
-        <app-item v-for="(item, index) in products" key="item" :item="item" :index="index">
+        <app-item v-for="(item, index) in products" :item="item" :key="item.id">
         </app-item>
       </transition-group>
     </div>

@@ -1,11 +1,11 @@
 <template>
-  <div class="item" style="width:290px;height:340px">
+  <div class="product-item">
     <p>{{ item.name }}</p>
-    <span class="salepill" v-if="item.sale">Sale</span>
+    <span class="salepill" v-if="true">Sale</span>
     <img style="width:200px;height:180px" :src="item.img_list[0]" :alt="`Image of ${item.name}`">
     <p>{{ item.sale_price | usdollar }}</p>
     <div class="btn-group">
-      <button class="btn-add" @click="minusItem">查看</button>
+      <button class="btn-add" @click="go">查看</button>
       <button class="btn-add" @click="addItem">加入购物车</button>
     </div>
   </div>
@@ -35,8 +35,8 @@ export default {
     minusItem() {
       this.$store.commit('minusItem', this.item);
     },
-    go(item) {
-      const { _id } = item
+    go() {
+      const { _id } = this.item
       this.$router.push({
         path: '/shop/' + _id
       });
@@ -46,8 +46,8 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.item {
-  border-radius: 5px;
+.product-item {
+  border-radius: 4px;
   padding: 20px;
   background: white;
   display: flex;

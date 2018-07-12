@@ -1,17 +1,11 @@
 <template>
   <aside>
     <div class="sidearea">
-      <label for="pricerange">Highest Price: <span>${{ pricerange }}</span></label>
-      <input 
-        class="slider" 
-        id="pricerange" 
-        type="range"
-        :value="pricerange"  
-        :min="min" 
-        :max="max" 
-        step="0.1" 
-        @input="$emit('update:pricerange', $event.target.value)"
-      />
+      <label for="pricerange">最高价:
+        <span>${{ pricerange }}</span>
+      </label>
+
+      <Slider v-model="value2" range></Slider>
       <span class="min">${{ min }}</span>
       <span class="max">${{ max }}</span>
     </div>
@@ -43,6 +37,7 @@ export default {
   },
   data() {
     return {
+      value2: [20, 50],
       min: 0,
       max: 400
     };
@@ -75,7 +70,6 @@ aside {
 }
 
 label {
-  font-family: 'Playfair Display', serif;
   padding: 15px 0;
   text-align: center;
 }
@@ -86,13 +80,12 @@ label {
 }
 
 label {
-  font-family: 'Playfair Display', serif;
   padding: 15px 0;
   text-align: center;
 }
 
 span {
-  font-family: 'Barlow', sans-serif;
+  font-family: "Barlow", sans-serif;
 }
 
 .max {

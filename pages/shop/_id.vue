@@ -205,6 +205,7 @@ export default {
     background: white;
     display: flex;
     padding: 60px;
+    border-radius: 4px;
     margin: 20px 0;
     .gallery-wrapper {
       .gallery {
@@ -222,7 +223,7 @@ export default {
             margin-top: 10px;
             padding: 0px;
             border: 1px solid #ccdb38;
-            border-radius: 5px;
+            border-radius: 4px;
             overflow: hidden;
             cursor: pointer;
             &.on {
@@ -238,12 +239,13 @@ export default {
         .thumb {
           .big {
             margin-left: 20px;
-            width: 440px;
-            height: 440px;
+            width: 400px;
+            height: 400px;
+            border: 1px solid rgba(128, 128, 128, 0.178);
           }
           img {
             display: block;
-            width: 440px;
+            width: 400px;
           }
         }
       }

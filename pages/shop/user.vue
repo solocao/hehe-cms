@@ -7,17 +7,17 @@
           <p slot="title">我的</p>
           <div class="user-shop-container">
             <ul>
-              <li>
+              <li @click="switchTab('cart')">
                 <span>我的购物车</span>
               </li>
-              <li>
+              <li @click="switchTab('order')">
                 <span>我的订单</span>
               </li>
-              <li>
+              <li @click="switchTab('info')">
                 <span>账户资料</span>
               </li>
-              <li>
-                <span>收获地址</span>
+              <li @click="switchTab('address')">
+                <span>收货地址</span>
               </li>
             </ul>
           </div>
@@ -26,11 +26,12 @@
       </div>
       </Col>
       <Col class="shop-tab" span="20">
-      <Card :bordered="false">
+      <shop-cart v-if="activeTab==='cart'"></shop-cart>
+      <Card :bordered="false" v-if="activeTab==='order'">
         <p slot="title">我的订单</p>
         <shop-list></shop-list>
       </Card>
-      <!-- <shop-address></shop-address> -->
+      <user-address v-if="activeTab==='address'"></user-address>
       </Col>
     </row>
   </div>
@@ -38,13 +39,26 @@
 <script>
 import ShopOrder from '../../components/ShopOrder.vue';
 import ShopList from '../../components/ShopList.vue';
-import ShopAddress from '../../components/ShopAddress.vue';
+import UserAddress from '../../components/shop/UserAddress.vue';
+
+import ShopCart from './cart.vue';
 export default {
+  data() {
+    return {
+      activeTab: 'cart'
+    }
+  },
   layout: 'shop',
   components: {
     ShopOrder,
     ShopList,
-    ShopAddress
+    UserAddress,
+    ShopCart
+  },
+  methods: {
+    switchTab(active) {
+      this.activeTab = active
+    }
   }
 
 }

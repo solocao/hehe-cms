@@ -281,5 +281,6 @@ h4 {
 
 .sidearea {
   padding-bottom: 30px;
+  border-radius: 4px;
 }
 </style>

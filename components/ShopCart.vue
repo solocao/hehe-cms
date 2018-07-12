@@ -37,7 +37,9 @@
         </div>
         </Col>
         <Col span="8">
-        <button class="shop-btn">去购物车</button>
+        <nuxt-link class="title" exact to="/shop/cart">
+          <button class="shop-btn">去购物车</button>
+        </nuxt-link>
         </Col>
       </Row>
     </div>
@@ -65,7 +67,8 @@ export default {
 .shop-cart {
   z-index: 9999;
   position: absolute;
-  right: 40px;
+  right: 0px;
+  top: 44px;
   width: 360px;
   background: white;
   display: flex;

@@ -2,7 +2,7 @@
   <div class="navarea-shop">
     <div class="shop-nav">
       <div class="capsule">
-        <nuxt-link class="title" exact to="/">
+        <nuxt-link class="title" exact to="/shop">
           潮鞋前线
         </nuxt-link>
         <ul>

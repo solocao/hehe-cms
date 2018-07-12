@@ -38,8 +38,6 @@
       <span>待付款</span>
       </Col>
     </Row>
-    哈哈哈 是个list
-
   </div>
 </template>
 <script>
@@ -54,7 +52,7 @@ export default {
     display: flex;
     align-items: center;
     height: 36px;
-    border-bottom: 1px solid #ebebeb;
+    border-bottom: 2px solid #ebebeb;
     font-size: 13px;
   }
 
