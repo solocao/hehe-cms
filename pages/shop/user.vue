@@ -27,10 +27,7 @@
       </Col>
       <Col class="shop-tab" span="20">
       <shop-cart v-if="activeTab==='cart'"></shop-cart>
-      <Card :bordered="false" v-if="activeTab==='order'">
-        <p slot="title">我的订单</p>
-        <shop-list></shop-list>
-      </Card>
+      <shop-list v-if="activeTab==='order'"></shop-list>
       <user-address v-if="activeTab==='address'"></user-address>
       </Col>
     </row>

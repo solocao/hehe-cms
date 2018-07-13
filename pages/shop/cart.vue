@@ -82,7 +82,7 @@
           </Col>
         </Row>
         <Row class="cart-footer">
-          <button text="现在购买" class="btn-shop" style="float:right">立即下单</button>
+          <button text="现在购买" @click="orderAdd" class="btn-shop" style="float:right">立即下单</button>
         </Row>
       </div>
     </Card>
@@ -116,6 +116,18 @@ export default {
     },
     minusItem(item) {
       this.$store.commit('minusItem', item);
+    },
+    async orderAdd() {
+      const params = {
+        url: 'order/add',
+        payload: {
+          product_list: JSON.stringify(this.cart),
+          address: JSON.stringify(this.address)
+        },
+        auth: true
+      }
+      const result = await this.post(params)
+      console.log(result)
     }
   }
 
