@@ -11,7 +11,7 @@
 </template>
 
 <script>
-const imgUrl = 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1530800114&di=833a62823bd0bbf8f23f87f055a78d9a&imgtype=jpg&er=1&src=http%3A%2F%2Fmxycsku.qiniucdn.com%2Fgroup5%2FM00%2F60%2F97%2FwKgBfVXjugCADLRuAAQ1wDHAr7A26.jpeg%3FimageMogr2%2Fstrip%2Fthumbnail%2F800%26gt%3B%2Fquality%2F95'
+const imgUrl = 'http://www.chinanews.com/part/society/508/U422P4T508D1F20424DT20180709135217.jpg'
 export default {
   data() {
     return {

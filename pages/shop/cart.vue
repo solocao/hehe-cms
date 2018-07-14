@@ -69,10 +69,16 @@
           </Col>
         </Row>
         <Row style="margin-top:12px">
-          <Col span="12" class="cart-address"> {{address}}
-          <Row> 姓名：曹伟 手机：17768118595</Row>
+          <Col span="12" class="cart-address">
           <Row>
-            多伦多失去
+            <Col span="6"> {{address.name}}
+            </Col>
+            <Col span="6"> {{address.mobile}}
+            </Col>
+          </Row>
+          <Row style="margin-top:5px">
+
+            {{address.address}}
           </Row>
           </Col>
           <Col span="12">

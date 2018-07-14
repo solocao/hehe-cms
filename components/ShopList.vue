@@ -5,7 +5,7 @@
       <Icon type="ios-loop-strong"></Icon>
       刷新
     </a>
-    <div class="shop-order-list" v-for="order in orders">
+    <div class="shop-order-list" v-for="order in orders" :key="order.id">
       <Row class="shop-order-title">
         <Col span="12">
         <span> 2018-02-12 22:01:13 订单号： 229880</span>
@@ -23,7 +23,7 @@
         <span>交易状态</span>
         </Col>
       </Row>
-      <Row class="shop-order-item" v-for="(product,index) in order.product_list">
+      <Row class="shop-order-item" v-for="(product,index) in order.product_list" :key="index">
         <Col span="12">
         <img :src="product.img" alt="">
         <div>

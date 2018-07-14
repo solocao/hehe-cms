@@ -6,14 +6,9 @@
         <nav-swiper></nav-swiper>
         </Col>
         <Col span="4" class="news-middle">
-        <div class="item">
-          af
-        </div>
-        <div class="item">
-          af
-        </div>
-        <div class="item">
-          af
+        <div class="item" v-for="item in threeThumb">
+          <img :src="item.img" alt="">
+          <div class="h-bottom">{{item.title}}</div>
         </div>
         </Col>
         <Col span="8" class="news-right">
@@ -87,6 +82,15 @@
 import NavSwiper from '../components/NavSwiper.vue'
 import HotRecomment from '../components/HotRecomment.vue'
 export default {
+  data() {
+    return {
+      threeThumb: [
+        { title: '河水暴涨', img: 'http://www.chinanews.com/sh/2018/07-02/U397P4T8D8553588F107DT20180703144039.jpg', url: '' },
+        { title: '河水暴涨', img: 'http://www.chinanews.com/sh/2018/07-02/U397P4T8D8553588F107DT20180703144039.jpg', url: '' },
+        { title: '河水暴涨', img: 'http://www.chinanews.com/sh/2018/07-02/U397P4T8D8553588F107DT20180703144039.jpg', url: '' }
+      ]
+    }
+  },
   components: {
     NavSwiper,
     HotRecomment
@@ -114,8 +118,22 @@ export default {
       .item {
         height: 118px;
         width: 100%;
-        background: red;
         margin-bottom: 3px;
+        position: relative;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+
+        .h-bottom {
+          position: absolute;
+          bottom: 0px;
+          height: 20px;
+          background: #03020299;
+          width: 100%;
+          color: white;
+        }
       }
     }
 

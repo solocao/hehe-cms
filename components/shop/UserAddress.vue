@@ -44,12 +44,12 @@
           <Col span="6">
           <div>
             <Button class="shop-address-btn" @click.native="addressDefault(item.index)" type="ghost" size="small">
-              {{address}} 设为默认{{item.active}}
+              {{address}} {{item.active === 1? '默认地址':'设为默认'}}
             </Button>
             <Button class="shop-address-btn" @click.native="handleUpdate(item)" type="ghost" size="small">
               修改
             </Button>
-            <Button class="shop-address-btn" @click.native="addItem(item)" type="ghost" size="small">
+            <Button class="shop-address-btn" @click.native="addressDelete(item.index)" type="ghost" size="small">
               删除
             </Button>
           </div>
@@ -114,6 +114,19 @@ export default {
     }
   },
   methods: {
+    // 删除地址
+    async addressDelete(index) {
+      alert(index)
+      const params = {
+        url: 'address/delete',
+        payload: {
+          index
+        },
+        auth: true
+      }
+      const result = await this.post(params)
+      this.addressList()
+    },
     async addressList() {
       const params = {
         url: 'address/list',

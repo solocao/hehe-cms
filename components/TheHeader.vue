@@ -1,30 +1,45 @@
 <template>
   <header class="main-header">
-    <div class="info">
-      网站头部 搜索相关
+    <div class="cms-title">
+      企业新闻网
     </div>
     <affix relative-element-selector="#example-content">
       <div class="nav">
         <ul>
-          <li>
-            <span>首页</span>
+          <li v-for="item in category">
+            <span>{{item}}</span>
           </li>
-          <li>
-            <span>明星</span>
-          </li>
+
         </ul>
       </div>
     </affix>
   </header>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      category: ['首页', '资讯', '国内', '陕西', '党建', '财经', '公益', '汽车', '用车', '新车', '论文', '人物']
+
+    }
+  }
+}
+</script>
+
 <style lang="stylus">
 @import '../style/var.styl';
 
 .main-header {
-  .info {
+  .cms-title {
     height: 50px;
-    width: 100%;
+    width: 1200px;
+    margin: 0px auto;
     background: white;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
   }
 
   .nav {
