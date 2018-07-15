@@ -1,15 +1,14 @@
 <template>
   <div class="hot-recomment">
-    <Row>
+    <Row v-for="(i,index) in 6" :key="index">
       <Col span="8">
       <img src="http://www.qiye.gov.cn/d/file/2018-07-02/a1f1adf66a24ffbaa4331f60b3202d77.png" alt="">
       </Col>
       <Col span="16">
-      <div class="title">
+      <div class="c-title">
         ACI心理学专家公益讲座在北京举办
-
       </div>
-      <div class="content">
+      <div class="c-content">
         为普及健康心理学知识，提高人们对心理健康问题的认识水平和解决能力，6月30日，美国认证协会（ACI）心理学专家公益讲座在北京成功举办。两位来自美国的资深心理学专家，伊丽莎白&m..
       </div>
       <div class="info">
@@ -27,6 +26,16 @@
   img {
     width: 100%;
     height: 100%;
+  }
+
+  .c-title {
+    margin-left: 4px;
+    font-size: 20px;
+  }
+
+  .c-content {
+    margin-left: 4px;
+    font-size: 14px;
   }
 }
 </style>

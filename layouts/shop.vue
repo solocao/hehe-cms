@@ -35,9 +35,8 @@ body {
 
 /* sticky footer stuff */
 .wrapper {
-  min-height: 100vh;
   margin-bottom: -60px;
-  background: #e7eefa;
+  background: #f3f4f5;
 }
 
 .footer,

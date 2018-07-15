@@ -3,8 +3,8 @@ html, body
   color: #2e2f30;
   letter-spacing: 0.5px;
   font-family: "Source Sans Pro", Arial, sans-serif;
-  height: 100vh;
   margin: 0;
+  background:red;
 }
 
 footer

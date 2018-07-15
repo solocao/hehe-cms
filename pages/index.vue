@@ -1,6 +1,6 @@
 <template>
   <section class="index-container" id="example-content">
-    <div style="height:2200px;width:100%;">
+    <div style="width:100%;">
       <Row class="nav-header">
         <Col span="12">
         <nav-swiper></nav-swiper>
@@ -12,27 +12,30 @@
         </div>
         </Col>
         <Col span="8" class="news-right">
-        <div>
+        <div class="news-right">
           <div class="header">
             今日热点
           </div>
-          <div>
-            <div>
-              新闻一
-            </div>
-            <div>
-              新闻二
-            </div>
-            <div>
-              新闻三
-            </div>
+
+          <div class="hot-div" v-for="(item,index) in hots" :key="index">
+
+            <div class="hot-index" :class="hotClass(index)">{{index+1}}</div>
+
+            <span class="hot-title">{{item}}</span>
 
           </div>
+
         </div>
         </Col>
       </Row>
       <!-- 广告宣称位置 -->
       <Row class="nav-ad">
+        <Col span="16" style="height:100%">
+        <img style="width:100%;height:100%" src="http://www.qiye.gov.cn/d/a/a1.jpg" alt="">
+        </Col>
+        <Col span="8" style="height:100%">
+        <img style="width:100%;height:100%" src="http://www.qiye.gov.cn/style/images/img3.jpg" alt="">
+        </Col>
 
       </Row>
 
@@ -40,15 +43,17 @@
       <Row class="news-guide">
         <Col span="16">
         <div class="title">
-          精选导读
+          <Row>精选导读</Row>
         </div>
+        <Row class="color-line"></Row>
+
         <div class="content">
           <div class="item_wrap" v-for="i in 6">
             <Row class="item">
-              <Col span="8" style="height:100%">
+              <Col span="9" style="height:100%">
               <img src="http://www.qiye.gov.cn/d/file/2018-06-11/54f2712bf5ecb0f4b502db2275c22bdf.jpg" alt="">
               </Col>
-              <Col span="16">
+              <Col span="15">
               <div class="title">
                 6月9日——9月9日一起来High
               </div>
@@ -70,6 +75,10 @@
       <!-- 文章热门 -->
       <Row class="news-hot">
         <Col span="16">
+        <div class="c-nav-header">
+          <Row>精选导读</Row>
+        </div>
+        <Row class="color-line"></Row>
         <hot-recomment></hot-recomment>
         </Col>
         <Col span="8">
@@ -88,12 +97,24 @@ export default {
         { title: '河水暴涨', img: 'http://www.chinanews.com/sh/2018/07-02/U397P4T8D8553588F107DT20180703144039.jpg', url: '' },
         { title: '河水暴涨', img: 'http://www.chinanews.com/sh/2018/07-02/U397P4T8D8553588F107DT20180703144039.jpg', url: '' },
         { title: '河水暴涨', img: 'http://www.chinanews.com/sh/2018/07-02/U397P4T8D8553588F107DT20180703144039.jpg', url: '' }
-      ]
+      ],
+      hots: ['河水暴涨', '河水暴涨', '河水暴涨', '河水暴涨', '河水暴涨', '河水暴涨', '河水暴涨', '河水暴涨', '河水暴涨', '河水暴涨']
     }
   },
   components: {
     NavSwiper,
     HotRecomment
+  },
+  methods: {
+    hotClass(index) {
+      if (index < 2) {
+        return 'hot-color-1'
+      }
+      if (index < 5) {
+        return 'hot-color-2'
+      }
+      return 'hot-color-3'
+    }
   }
 
 }
@@ -139,20 +160,46 @@ export default {
 
     // 最右边的布局
     .news-right {
-      padding-left: 8px;
-      border: 1px solid grey;
+      padding-left: 10px;
+
+      .new-content {
+        background: grey;
+      }
 
       .header {
-        height: 40px;
+        height: 30px;
         font-size: 16px;
         font-weight: bold;
+        color: red;
+        border-bottom: 1px solid grey;
+        margin-bottom: 2px;
+      }
+
+      .hot-div {
+        height: 33px;
+        display: flex;
+        align-items: center;
+
+        .hot-index {
+          width: 25px;
+          height: 25px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+        }
+
+        .hot-title {
+          margin-left: 4px;
+          font-size: 14px;
+        }
       }
     }
   }
 
   // 导航广告位
   .nav-ad {
-    height: 200px;
+    height: 100px;
     width: 100%;
     margin-top: 10px;
     background: yellow;
@@ -162,29 +209,28 @@ export default {
   .news-guide {
     height: 400px;
     margin-top: 10px;
-    background: purple;
 
     .title {
       font-size: 16px;
       font-weight: bold;
-      height: 40px;
+      height: 30px;
       display: flex;
       align-items: center;
+      width: 100%;
     }
 
     .content {
-      height: 360px;
-      background: red;
+      height: 280px;
     }
 
     .item_wrap {
-      height: 120px;
+      height: 100px;
       width: 50%;
       padding: 2px;
       float: left;
 
       .item {
-        background: yellow;
+        background: #ededed;
         width: 100%;
         height: 100%;
 
@@ -194,14 +240,44 @@ export default {
         }
 
         .title {
-          height: 40px;
+          height: 30px;
+          padding-left: 4px;
         }
 
         .content {
           height: 100%;
+          padding: 4px;
         }
       }
     }
   }
+}
+
+.hot-color-1 {
+  background: #F23D7C;
+}
+
+.hot-color-2 {
+  background: #DB5751;
+}
+
+.hot-color-3 {
+  background: #FF9800;
+}
+
+.color-line {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, #f3005c, #ffde00);
+  margin-bottom: 2px;
+}
+
+.c-nav-header {
+  font-size: 16px;
+  font-weight: bold;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  width: 100%;
 }
 </style>
