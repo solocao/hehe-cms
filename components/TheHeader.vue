@@ -31,6 +31,9 @@ export default {
 @import '../style/var.styl';
 
 .main-header {
+  background: white;
+  width: 100%;
+
   .cms-title {
     height: 50px;
     width: 1200px;

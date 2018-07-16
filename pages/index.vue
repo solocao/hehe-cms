@@ -124,8 +124,11 @@ export default {
 <style lang="stylus">
 @import '../style/var.styl';
 
+body {
+  background: #F3F4F5;
+}
+
 .index-container {
-  background: white;
   width: content-max;
   margin: 0 auto;
   margin-top: 10px;

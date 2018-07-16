@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="backgroud:red">
     <the-header></the-header>
     <nuxt/>
     <my-footer/>
@@ -19,12 +19,12 @@ export default {
 </script>
 
 <style>
-.container {
+/* .container {
   margin: 0;
   width: 100%;
   padding: 100px 0;
   text-align: center;
-}
+} */
 
 .button,
 .button:visited {
