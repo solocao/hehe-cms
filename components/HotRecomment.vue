@@ -1,6 +1,6 @@
 <template>
   <div class="hot-recomment">
-    <Row v-for="(i,index) in 6" :key="index">
+    <Row class="recomment-item" v-for="(i,index) in 6" :key="index">
       <Col span="8">
       <img src="http://www.qiye.gov.cn/d/file/2018-07-02/a1f1adf66a24ffbaa4331f60b3202d77.png" alt="">
       </Col>
@@ -22,6 +22,7 @@
 <style lang="stylus">
 .hot-recomment {
   height: 175px;
+  padding: 2px;
 
   img {
     width: 100%;
@@ -36,6 +37,12 @@
   .c-content {
     margin-left: 4px;
     font-size: 14px;
+  }
+
+  .recomment-item {
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
+    padding: 3px;
+    margin: 4px 0px;
   }
 }
 </style>
