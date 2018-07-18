@@ -1,5 +1,5 @@
 <template>
   <footer>
-    企业新闻网
+    企业信息网
   </footer>
 </template>

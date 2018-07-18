@@ -1,7 +1,7 @@
 <template>
   <div class="article-detail">
     <Row>
-      <Col span="16">
+      <Col span="16" class="article-left">
       <div>
         <h1>神奇的天路！京东智慧政采直通“天空之城”日喀则</h1>
         <Row class="info">
@@ -29,6 +29,23 @@
       </div>
       </Col>
       <Col span="8">
+      <div class="article-right">
+        <div style="width:100%">
+          <img style="width:100%" src="http://www.qiye.gov.cn/d/a/a3.jpg" alt="">
+        </div>
+        <div class="a-list" v-for="i in 8">
+          <div class="article-thumbnail">
+            <img src="http://www.qiye.gov.cn/d/file/2018-06-11/eea1e53e93976a4198099a6e762ad92e.jpg" alt="">
+          </div>
+          <div class="article-holder">
+            <h3>如何让用听写软件佐治动态走</h3>
+            <div>西雅图老胡</div>
+            <div>299次观看</div>
+          </div>
+        </div>
+
+      </div>
+
       </Col>
     </Row>
     hello article {{$route.params.id}}
@@ -44,11 +61,26 @@ export default {
 <style lang="stylus">
 @import '../../style/var.styl';
 
+body {
+  background: #F3F4F5;
+}
+
 .article-detail {
   background: white;
   width: content-max;
   margin: 0 auto;
   margin-top: 10px;
+  padding: 0px 0px;
+
+  .article-left {
+    border-right: 1px solid #E1E1E1;
+    padding: 30px;
+  }
+
+  .article-right {
+    width: 100%;
+    padding: 4px;
+  }
 
   .info {
     margin-top: 10px;
@@ -79,6 +111,25 @@ export default {
 
     .content {
     }
+  }
+}
+
+.a-list {
+  display: flex;
+  margin: 5px;
+
+  .article-thumbnail {
+    margin-right: 8px;
+    height: 80px;
+    width: 130px;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .article-holder {
   }
 }
 </style>

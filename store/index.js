@@ -143,7 +143,8 @@ const createStore = () => {
         state.cart = {};
       },
       addItem: (state, item) => {
-        const { id, name, price } = item
+        console.log(item)
+        const { id, name, sale_price, img_list } = item
         const index = state.cart.findIndex(x => x.id === id)
         if (index > -1) {
           console.log(state.cart[index].count)
@@ -153,9 +154,9 @@ const createStore = () => {
             {
               id: id,
               name: name,
-              price: price,
+              price: sale_price,
               count: 1,
-              img: 'http://www.aaebike.com:9090/data/img/2ada81_1513910170835.jpg'
+              img: img_list[0]
             }
           )
         }

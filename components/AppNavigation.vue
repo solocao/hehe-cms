@@ -29,13 +29,16 @@
               <shop-cart v-show="showCart"></shop-cart>
             </transition>
           </div>
-          <div class="cartitem">
+          <div class="cartitem" @mouseover="userCart=true" @mouseout="userCart=false">
             <nuxt-link to="/shop/user">
               <div v-if="cartTotal > 0" class="cartcount">{{ cartTotal }}</div>
               <span style="width:40px;height:40px">
                 <Icon type="person" size=30 color="#7F7F7F"></Icon>
               </span>
             </nuxt-link>
+            <transition name="slide-fade">
+              <user-hover-card v-show="userCart"></user-hover-card>
+            </transition>
           </div>
 
         </div>
@@ -48,15 +51,18 @@
 <script>
 import ShopCart from './ShopCart.vue'
 import ShopHeader from './ShopHeader.vue'
+import UserHoverCard from './shop/UserHoverCard.vue'
 export default {
   data() {
     return {
-      showCart: false
+      showCart: false,
+      userCart: false
     }
   },
   components: {
     ShopCart,
-    ShopHeader
+    ShopHeader,
+    UserHoverCard
   },
   computed: {
     cartTotal() {
@@ -130,7 +136,7 @@ export default {
 }
 
 .slide-fade-enter-active {
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 .slide-fade-leave-active {
@@ -138,7 +144,7 @@ export default {
 }
 
 .slide-fade-enter, .slide-fade-leave-to {
-  transform: translateX(10px);
+  transform: translateX(5px);
   opacity: 0;
 }
 </style>

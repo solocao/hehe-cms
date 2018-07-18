@@ -1,12 +1,12 @@
 <template>
   <div class="shop-cart">
-    <div class="empty" v-show="cart.length==0">
+    <div class="empty" v-if="cart.length==0">
       你的购物车空空如野
     </div>
-    <div class="detail" v-show="cart.length>0">
+    <div class="detail" v-else>
       <div class="item" v-for="item in $store.state.cart" :key="item.id">
         <div>
-          <img src="http://www.aaebike.com:9090/data/img/2ada81_1513910170835.jpg" alt="">
+          <img :src="item.img" alt="">
         </div>
         <div class="info">
           <div class="name">
@@ -29,11 +29,11 @@
       <Row class="cart-footer">
         <Col span="16">
         <div class="count">
-          共2件商品
+          共{{totalCount}}件商品
         </div>
         <div class="price">
           <span>合计</span>
-          <span>5009元</span>
+          <span>{{totalPrice}}元</span>
         </div>
         </Col>
         <Col span="8">
@@ -49,7 +49,22 @@
 import { mapState } from 'vuex';
 export default {
   computed: {
-    ...mapState(['cart'])
+    ...mapState(['cart']),
+    totalPrice() {
+      let totalPrice = 0
+      this.cart.forEach((x) => {
+        totalPrice = totalPrice + x.price * x.count
+      })
+      return totalPrice
+    },
+    totalCount() {
+      let totalCount = 0
+      this.cart.forEach((x) => {
+        totalCount = totalCount + x.count
+      })
+      return totalCount
+    }
+
   },
 
   methods: {

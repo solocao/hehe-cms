@@ -11,7 +11,8 @@
           <div class="h-bottom">{{item.title}}</div>
         </div>
         </Col>
-        <Col span="8" class="news-right">
+        <Col span="8" style="padding-left:6px">
+
         <div class="news-right">
           <div class="header">
             今日热点
@@ -21,6 +22,7 @@
             <span class="hot-title">{{item}}</span>
           </div>
         </div>
+
         </Col>
       </Row>
       <!-- 广告宣称位置 -->
@@ -212,7 +214,11 @@
 
         <Row class="color-line"></Row>
         </Col>
-        <Col span="8">
+        <Col span="8" style="padding-left:6px">
+        <Affix :offset-top="60">
+          <img style="width:100%" src="http://www.qiye.gov.cn/d/a/a4.jpg" alt="">
+        </Affix>
+
         </Col>
       </Row>
     </div>
@@ -294,6 +300,7 @@ body {
 
     // 最右边的布局
     .news-right {
+      background: white;
       padding-left: 10px;
 
       .new-content {
@@ -305,7 +312,7 @@ body {
         font-size: 16px;
         font-weight: bold;
         color: red;
-        border-bottom: 1px solid grey;
+        border-bottom: 1px solid #F1F2F4;
         margin-bottom: 2px;
       }
 

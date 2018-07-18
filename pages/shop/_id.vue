@@ -1,9 +1,6 @@
 <!--商品详情-->
 <template>
   <div class="store-content">
-    <div>
-      {{product.img_list}}
-    </div>
     <div class="gray-box">
       <div class="gallery-wrapper">
         <div class="gallery">
@@ -26,7 +23,7 @@
         <div class="sku-custom-title">
           <h4>{{product.name}}</h4>
           <h6>
-            <span>safasf{{product.description}}</span>
+            <span>{{product.description}}</span>
             <span class="price">
               <em>¥</em>
               <i>{{product.sale_price}}</i>

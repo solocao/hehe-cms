@@ -36,7 +36,7 @@ body {
 /* sticky footer stuff */
 .wrapper {
   margin-bottom: -60px;
-  background: red;
+  background: #F3F4F5;
 }
 
 .footer,

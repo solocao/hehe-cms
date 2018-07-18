@@ -1,7 +1,7 @@
 <template>
   <header class="main-header">
     <div class="cms-title">
-      企业新闻网
+      企业信息网
     </div>
     <affix relative-element-selector="#example-content">
       <div class="nav">
@@ -9,7 +9,6 @@
           <li v-for="item in category">
             <span>{{item}}</span>
           </li>
-
         </ul>
       </div>
     </affix>
