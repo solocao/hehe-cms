@@ -4,8 +4,8 @@
     <div class="contain">
       <app-sidebar :pricerange.sync="highprice" />
       <transition-group name="items" tag="section" class="content">
-        <app-item v-for="(item, index) in products" :item="item" :key="item.id">
-        </app-item>
+        <shop-item v-for="(item, index) in products" :item="item" :key="item.id">
+        </shop-item>
       </transition-group>
     </div>
   </main>
@@ -14,14 +14,14 @@
 <script>
 import AppSidebar from '../../components/AppSidebar.vue';
 import AppMasthead from '../../components/AppMasthead.vue';
-import AppItem from '../../components/AppItem.vue';
+import ShopItem from '../../components/shop/ShopItem.vue';
 
 export default {
   layout: 'shop',
   components: {
     AppSidebar,
     AppMasthead,
-    AppItem
+    ShopItem
   },
   data() {
     return {
