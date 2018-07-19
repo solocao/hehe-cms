@@ -20,6 +20,8 @@ const createStore = () => {
         }
       ],
       sale: false,
+      // 喜欢的商品
+      loves: [],
       products: [
         {
           name: 'Khaki Suede Polish Work Boots',

@@ -8,10 +8,13 @@
       <button class="btn-add" @click="go">查看</button>
       <button class="btn-add" @click="addItem">加入购物车</button>
     </div>
+    <div class="love-icon">
+      <Icon type="heart" :size="36" :color="heartColor(item._id)" @click="lightHeart(item._id)"></Icon>
+    </div>
   </div>
 </template>
-
 <script>
+import { mapMutations, mapState } from 'vuex';
 export default {
   props: {
     item: {
@@ -28,7 +31,51 @@ export default {
       return `$${value}`;
     }
   },
+  computed: {
+    ...mapState(['loves'])
+
+  },
   methods: {
+    ...mapMutations({
+      set: 'set'
+    }),
+    heartColor(productID) {
+      if (this.loves.findIndex(x => x === productID) > -1) {
+        return 'red'
+      } else {
+        return '#EEEFF0'
+      }
+    },
+    // 点亮小爱心
+    async   lightHeart(productID) {
+      const index = this.loves.findIndex(x => x === productID)
+      if (index > -1) {
+        this.loves.splice(index, 1)
+        this.set({ loves: this.loves })
+        const params = {
+          url: 'user/loves/delete',
+          payload: {
+            product_id: productID
+          },
+          auth: true
+        }
+        const result = await this.post(params)
+        console.log(result)
+      } else {
+        this.loves.push(productID)
+        this.set({ loves: this.loves })
+        // 后台新增
+        const params = {
+          url: 'user/loves/add',
+          payload: {
+            product_id: productID
+          },
+          auth: true
+        }
+        const result = await this.post(params)
+        console.log(result)
+      }
+    },
     addItem() {
       this.$store.commit('addItem', this.item);
     },
@@ -77,6 +124,13 @@ export default {
   .btn-group {
     display: flex;
     justify-content: space-between;
+  }
+
+  .love-icon {
+    position: absolute;
+    left: 10px;
+    top: 8px;
+    cursor: pointer;
   }
 }
 
