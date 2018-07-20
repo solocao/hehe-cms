@@ -26,7 +26,7 @@
       </div>
       </Col>
       <Col class="shop-tab" span="20">
-      <shop-cart v-if="activeTab==='cart'"></shop-cart>
+      <!-- <shop-cart v-if="activeTab==='cart'"></shop-cart> -->
       <shop-list v-if="activeTab==='order'"></shop-list>
       <user-address v-if="activeTab==='address'"></user-address>
       </Col>
@@ -37,7 +37,6 @@
 import ShopOrder from '../../components/ShopOrder.vue';
 import ShopList from '../../components/ShopList.vue';
 import UserAddress from '../../components/shop/UserAddress.vue';
-
 import ShopCart from './cart.vue';
 export default {
   data() {

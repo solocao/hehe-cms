@@ -33,7 +33,7 @@
             <!-- {{item}} -->
             <img :src="item.img" alt="">
             <div>
-              <span>{{item.name}}</span>
+              <!-- <span>{{item.name}}</span> -->
             </div>
           </div>
           </Col>
@@ -71,7 +71,8 @@
         <Row style="margin-top:12px">
           <Col span="12" class="cart-address">
           <Row>
-            <Col span="6"> {{address.name}}
+            <Col span="6">
+            <!-- {{address.name}} -->
             </Col>
             <Col span="6"> {{address.mobile}}
             </Col>

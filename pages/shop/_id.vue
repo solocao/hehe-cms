@@ -6,8 +6,8 @@
         <div class="gallery">
           <div class="thumbnail">
             <ul>
-              <li v-for="item in product.img_list" :class="{on:big===item}" @click="big=item">
-                <img :src="item" style="width:100%;height:100%">
+              <li v-for="item in product.img_list" :class="{on:big===item.url}" @click="big=item.url">
+                <img :src="item.url" style="width:100%;height:100%">
               </li>
             </ul>
           </div>
@@ -49,6 +49,39 @@
     <div v-html="product.content">
       {{product.content}}
     </div>
+
+    <div>
+      <div class="comment-add">
+        <div class="comment-user">
+          <img src="https://images.nowcoder.com/images/20170409/435809_1491710010101_5BD318FACE1521B65A15D03FA001C1E5@0e_100w_100h_0c_1i_1o_90Q_1x" alt="">
+
+        </div>
+        <div class="comment-content">
+          <div>
+            <Input v-model="value8" type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="Enter something..."></Input>
+
+          </div>
+
+          <div>
+            <button text="现在购买" class="btn-small" style="float:right">评论</button>
+          </div>
+
+        </div>
+      </div>
+      <div class="comment-add">
+        <div class="comment-user">
+          <img src="https://images.nowcoder.com/images/20170409/435809_1491710010101_5BD318FACE1521B65A15D03FA001C1E5@0e_100w_100h_0c_1i_1o_90Q_1x" alt="">
+        </div>
+        <div class="comment-content">
+          <div>
+            sdfsdgdfgdsgsdgdsdgsdgs
+          </div>
+          <div>
+            -2016年8月6日
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -56,6 +89,8 @@ export default {
   layout: 'shop',
   data() {
     return {
+
+      value: null,
       productMsg: {},
       small: ['http://www.aaebike.com:9090/data/img/2ada81_1513910170835.jpg', 'http://www.aaebike.com:9090/data/img/6023d2_1513910177241.png', 'http://www.aaebike.com:9090/data/img/359ec8_1513910178921.jpg'],
 
@@ -91,7 +126,7 @@ export default {
       }
       const result = await this.get(params)
       this.product = result.data
-      this.big = this.product.img_list[0]
+      this.big = this.product.img_list[0].url
       console.log('看看结果')
       console.log(this.product)
     }
@@ -314,5 +349,37 @@ export default {
   width: 145px;
   height: 50px;
   line-height: 48px;
+}
+
+.btn-small {
+  width: 80px;
+  height: 30px;
+  line-height: 30px;
+  margin-top: 10px;
+}
+
+.comment-add {
+  margin: 6px 0px;
+  width: 100%;
+  background: grey;
+  .comment-user {
+    float: left;
+    width: 100px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+    }
+  }
+  .comment-content {
+    float: left;
+    width: calc(100% - 100px);
+    height: 100%;
+    padding-left: 10px;
+  }
 }
 </style>
