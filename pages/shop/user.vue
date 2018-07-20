@@ -29,6 +29,7 @@
       <!-- <shop-cart v-if="activeTab==='cart'"></shop-cart> -->
       <shop-list v-if="activeTab==='order'"></shop-list>
       <user-address v-if="activeTab==='address'"></user-address>
+      <user-info></user-info>
       </Col>
     </row>
   </div>
@@ -37,6 +38,7 @@
 import ShopOrder from '../../components/ShopOrder.vue';
 import ShopList from '../../components/ShopList.vue';
 import UserAddress from '../../components/shop/UserAddress.vue';
+import UserInfo from '../../components/shop/UserInfo.vue';
 import ShopCart from './cart.vue';
 export default {
   data() {
@@ -49,7 +51,8 @@ export default {
     ShopOrder,
     ShopList,
     UserAddress,
-    ShopCart
+    ShopCart,
+    UserInfo
   },
   methods: {
     switchTab(active) {
