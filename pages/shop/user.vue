@@ -19,6 +19,9 @@
               <li @click="switchTab('address')">
                 <span>收货地址</span>
               </li>
+              <li @click="switchTab('loves')">
+                <span>Loves</span>
+              </li>
             </ul>
           </div>
         </Card>
@@ -29,7 +32,8 @@
       <!-- <shop-cart v-if="activeTab==='cart'"></shop-cart> -->
       <shop-list v-if="activeTab==='order'"></shop-list>
       <user-address v-if="activeTab==='address'"></user-address>
-      <user-info></user-info>
+      <user-info v-if="activeTab==='info'"></user-info>
+      <user-loves v-if="activeTab==='loves'"></user-loves>
       </Col>
     </row>
   </div>
@@ -39,6 +43,7 @@ import ShopOrder from '../../components/ShopOrder.vue';
 import ShopList from '../../components/ShopList.vue';
 import UserAddress from '../../components/shop/UserAddress.vue';
 import UserInfo from '../../components/shop/UserInfo.vue';
+import UserLoves from '../../components/shop/UserLoves.vue';
 import ShopCart from './cart.vue';
 export default {
   data() {
@@ -52,7 +57,8 @@ export default {
     ShopList,
     UserAddress,
     ShopCart,
-    UserInfo
+    UserInfo,
+    UserLoves
   },
   methods: {
     switchTab(active) {
