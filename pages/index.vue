@@ -16,10 +16,11 @@
           <div class="header">
             今日热点
           </div>
-          <div class="hot-div" v-for="(item,index) in hots" :key="index">
+          <nuxt-link :to="`/article/${item._id}`" class="hot-div" v-for="(item,index) in hots" :key="index">
             <div class="hot-index" :class="hotClass(index)">{{index+1}}</div>
-            <span class="hot-title">{{item}}</span>
-          </div>
+            <span class="hot-title">{{item.title}}</span>
+          </nuxt-link>
+
         </div>
 
         </Col>
@@ -242,6 +243,21 @@ export default {
     HotRecomment
   },
   methods: {
+    async hotList() {
+      const params = {
+        url: 'article/list',
+        payload: {
+          page: 1,
+          size: 10,
+          hot: 1
+        }
+      }
+      const result = await this.post(params);
+      console.log(result)
+      if (result.code === 1) {
+        this.hots = result.data
+      }
+    },
     hotClass(index) {
       if (index < 2) {
         return 'hot-color-1'
@@ -251,6 +267,9 @@ export default {
       }
       return 'hot-color-3'
     }
+  },
+  mounted() {
+    this.hotList()
   }
 
 }
@@ -319,6 +338,11 @@ body {
         height: 33px;
         display: flex;
         align-items: center;
+        cursor: pointer;
+
+        &:hover {
+          background: #EEEEEE;
+        }
 
         .hot-index {
           width: 25px;
