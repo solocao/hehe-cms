@@ -1,13 +1,19 @@
 <template>
-  <!-- You can find this swiper instance object in current component by the "mySwiper"  -->
-  <div class="my-swiper" v-swiper:mySwiper="swiperOption">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide" v-for="banner in banners">
-        <img :src="banner">
+  <div class="my-swiper">
+    <div v-swiper:mySwiper="swiperOption" v-if="banners.length>0">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide item" v-for="(banner,index) in banners" :key="index">
+          <img :src="banner.url">
+          <!-- <nuxt-link :to="`/article/${banner._id}`" class="title">
+            <span>{{ banner._id }}</span>
+          </nuxt-link> -->
+        </div>
       </div>
+      <div class="swiper-pagination swiper-pagination-bullets"></div>
     </div>
-    <div class="swiper-pagination swiper-pagination-bullets"></div>
+
   </div>
+
 </template>
 
 <script>
@@ -16,13 +22,12 @@ export default {
   data() {
     return {
       banners: [
-        imgUrl, imgUrl, imgUrl
+
       ],
       swiperOption: {
         loop: true,
         slidesPerView: 'auto',
         centeredSlides: true,
-        spaceBetween: 30,
         pagination: {
           el: '.swiper-pagination',
           dynamicBullets: true
@@ -38,12 +43,25 @@ export default {
       }
     }
   },
+  methods: {
+    async swiperList() {
+      const params = {
+        url: 'article/list',
+        payload: {
+          page: 1,
+          size: 3
+        }
+      }
+      const result = await this.post(params)
+      this.banners = result.data.map(x => { return { url: x.img_list[0].url, _id: x._id } })
+
+      console.log('看看结果')
+      console.log(result)
+    }
+  },
   mounted() {
-    console.log('app init', this)
-    console.log(
-      'This is current swiper instance object', this.mySwiper,
-      'I will slideTo banners 3')
-    this.mySwiper.slideTo(3)
+    this.swiperList()
+    // this.mySwiper.slideTo(1)
   }
 }
 </script>
@@ -60,7 +78,7 @@ export default {
 
     img {
       width: 100%;
-      height: 100%;
+      height: 360px;
     }
   }
 

@@ -12,7 +12,6 @@
         </div>
         </Col>
         <Col span="8" style="padding-left:6px">
-
         <div class="news-right">
           <div class="header">
             今日热点
