@@ -41,23 +41,22 @@
         <div class="cms-card">
           <div class="cms-card-header">
             <h2 class="cms-card-title">
-              <span>文章导读</span>
+              <span>今日聚焦</span>
             </h2>
           </div>
           <Row class="color-line"></Row>
           <Row class="cms-card-content">
-            <div class="item_wrap" v-for="i in 6">
+            <div class="item_wrap" v-for="(focus,index) in focusArr">
               <Row class="item">
                 <Col span="9" style="height:100%">
-                <img src="http://www.qiye.gov.cn/d/file/2018-06-11/54f2712bf5ecb0f4b502db2275c22bdf.jpg" alt="">
+                <img :src="focus.thumb" alt="">
                 </Col>
                 <Col span="15">
                 <div class="title">
-                  6月9日——9月9日一起来High
+                  {{focus.title}}
                 </div>
                 <div class="content">
-                  深圳世界之窗点燃鹏城热情，冰爽啤酒节引爆夏日狂欢 激情主持、风情热舞、…
-
+                  {{focus.description}}
                 </div>
                 </Col>
 
@@ -235,7 +234,8 @@ export default {
         { title: '河水暴涨', img: 'http://www.chinanews.com/sh/2018/07-02/U397P4T8D8553588F107DT20180703144039.jpg', url: '' },
         { title: '河水暴涨', img: 'http://www.chinanews.com/sh/2018/07-02/U397P4T8D8553588F107DT20180703144039.jpg', url: '' }
       ],
-      hots: ['河水暴涨', '河水暴涨', '河水暴涨', '河水暴涨', '河水暴涨', '河水暴涨', '河水暴涨', '河水暴涨', '河水暴涨', '河水暴涨']
+      hots: ['河水暴涨', '河水暴涨', '河水暴涨', '河水暴涨', '河水暴涨', '河水暴涨', '河水暴涨', '河水暴涨', '河水暴涨', '河水暴涨'],
+      focusArr: []
     }
   },
   components: {
@@ -243,6 +243,9 @@ export default {
     HotRecomment
   },
   methods: {
+    async focusList() {
+
+    },
     async hotList() {
       const params = {
         url: 'article/list',
@@ -256,6 +259,14 @@ export default {
       console.log(result)
       if (result.code === 1) {
         this.hots = result.data
+        this.focusArr = result.data.slice(0, 6).map(x => {
+          try {
+            x.thumb = x.img_list[0].url
+          } catch (err) {
+            x.thumb = 'http://upload.cheaa.com/2018/0423/1524453328527.jpg'
+          }
+          return x
+        })
       }
     },
     hotClass(index) {
