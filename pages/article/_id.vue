@@ -18,13 +18,20 @@
         </div>
         <!-- 免责声明 -->
         <div class="disclaimer">
-          <div class="title">
+          <div class="d-title">
             声明
           </div>
-          <div class="content">
-            1、本网站为服务于中国中小企业的公益性政府网站，因部分文章来源于网络，如有侵权，请来邮来电告知，本站将立即改正。2、作者投稿可能会经本站编辑修改或补充。
+          <div class="d-content">
+            <p>
+              1、本网站为服务于中国中小企业的公益性政府网站，因部分文章来源于网络，如有侵权，请来邮来电告知，本站将立即改正。
+            </p>
+            <p>
+              2、作者投稿可能会经本站编辑修改或补充。
+            </p>
+            <p>
+              3、本网站图片，文字之类版权申明，因为网站可以由注册用户自行上传图片或文字，本网站无法鉴别所上传图片或文字的知识版权，如果侵犯，请及时通知我们，本网站将在第一时间及时删除。
+            </p>
           </div>
-
         </div>
       </div>
       </Col>
@@ -120,15 +127,25 @@ body {
   .disclaimer {
     margin: 10px 0px;
     display: flex;
+    border: 1px solid #F1F2F4;
+    height: 84px;
 
-    .title {
-      background: red;
+    .d-title {
+      background: #F1F2F4;
       font-size: 18px;
       font-weight: bold;
       color: white;
+      writing-mode: vertical-lr;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      color: #505664;
     }
 
-    .content {
+    .d-content {
+      padding: 5px;
+      padding-left: 10px;
     }
   }
 }

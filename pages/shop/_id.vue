@@ -43,7 +43,7 @@
     <div v-html="product.content">
       {{product.content}}
     </div>
-    <div>
+    <div>z
       asfafas
     </div>
     <div v-html="product.content">
