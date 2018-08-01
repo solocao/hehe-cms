@@ -1,7 +1,9 @@
 <template>
   <header class="main-header">
     <div class="cms-title">
-      企业信息网
+      <nuxt-link :to="`/`">
+        企业信息网
+      </nuxt-link>
     </div>
     <affix relative-element-selector="#example-content">
       <div class="nav">

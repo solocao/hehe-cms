@@ -44,15 +44,15 @@
             </h2>
           </div>
           <Row class="color-line"></Row>
-          <Row class="cms-card-content">
-            <div class="item_wrap" v-for="(focus,index) in focusArr">
+          <Row class="cms-card-content" v-if="focusArt!==null">
+            <div class="item_wrap" v-for="(focus,index) in focusArt">
               <Row class="item">
                 <Col span="9" style="height:100%">
-                <img :src="focus.thumb" alt="">
+                <img :src="focus.img_list[0].url" alt="">
                 </Col>
                 <Col span="15">
-                <div class="title">
-                  {{focus.title}}
+                <div class="c-title">
+                  <a :href="`/article/${focus._id}`" target="_blank">{{focus.title}}</a>
                 </div>
                 <div class="content">
                   {{focus.description}}
@@ -158,7 +158,8 @@ export default {
       hots: ['河水暴涨', '河水暴涨', '河水暴涨', '河水暴涨', '河水暴涨', '河水暴涨', '河水暴涨', '河水暴涨', '河水暴涨', '河水暴涨'],
       focusArr: [],
       // 分类信息的数据集合
-      categoryData: []
+      categoryData: [],
+      focusArt: []
     }
   },
   components: {
@@ -166,8 +167,33 @@ export default {
     HotRecomment
   },
   methods: {
+    focusFormat(title, description) {
+      const title1 = title;
+      const description1 = description;
+      return { title1, description1 }
+    },
     async focusList() {
-
+      const params = {
+        url: 'article/list',
+        payload: {
+          page: 1,
+          size: 6,
+          tag: '5b600923cb34e68fc2d4cc18'
+        }
+      }
+      const result = await this.post(params);
+      console.log('看看今日聚焦');
+      console.log(result);
+      result.data.forEach(x => {
+        const { title, description } = x
+        if (title.length < 30) {
+          x.description = description.slice(0, 25)
+        }
+        if (title.length < 15) {
+          // x.description = description.slice(0, 50);
+        }
+      });
+      this.focusArt = result.data;
     },
     async categoryGroupList() {
       const params = {
@@ -214,8 +240,9 @@ export default {
     }
   },
   mounted() {
-    this.hotList()
-    this.categoryGroupList()
+    this.hotList();
+    this.categoryGroupList();
+    this.focusList();
   }
 
 }
@@ -227,6 +254,10 @@ export default {
 
 body {
   background: #F3F4F5;
+
+  a {
+    color: #2e2f30;
+  }
 }
 
 .index-container {
@@ -320,13 +351,14 @@ body {
     margin-top: 10px;
     margin-bottom: 10px;
 
-    .title {
+    .c-title {
       font-size: 16px;
       font-weight: bold;
-      height: 30px;
+      min-height: 30px;
       display: flex;
       align-items: center;
       width: 100%;
+      padding: 0px 3px;
     }
 
     .content {
