@@ -20,7 +20,6 @@
             <div class="hot-index" :class="hotClass(index)">{{index+1}}</div>
             <span class="hot-title">{{item.title}}</span>
           </nuxt-link>
-
         </div>
 
         </Col>
@@ -67,20 +66,21 @@
 
         </Col>
         <Col span="8" style="padding-left:3px">
-
-        <div class="cms-card">
+        <!-- 企业经纬 -->
+        <div class="cms-card" v-if="categoryData.length>0">
           <div class="cms-card-header">
             <h2 class="cms-card-title">
-              <span>行业资讯</span>
+              <span>{{ categoryData[0].category}}</span>
             </h2>
           </div>
           <Row class="color-line"></Row>
           <Row class="cms-card-content">
-            <div class="zixun-item" v-for="i in 13" style="font-size:14px">
-              <span class="zixun-category">时政热点</span>
-              <span class="zixun-title">香港新房策出台后大型屋苑交投插水</span>
+            <div class="zixun-item" v-for="item in categoryData[0].data" style="font-size:14px">
+              <!-- <span class="zixun-category">时政热点</span> -->
+              <span class="zixun-title">
+                <a :href="`/article/${item._id}`" target="_blank">{{item.title}}</a>
+              </span>
             </div>
-
           </Row>
         </div>
         </Col>
@@ -96,113 +96,34 @@
         </Col>
       </Row>
       <!-- 分类信息 -->
-      <Row style="margin-top:6px">
-        <Col span="8" style="padding-right:3px">
+      <Row style="margin-top:16px" v-if="categoryData.length>0">
+        <Col span="8" style="padding-right:3px" v-for="(index,item) in 3" :key="index">
         <div class="cms-card">
           <div class="cms-card-header">
             <h2 class="cms-card-title">
-              <span>财经</span>
+              <span>{{categoryData[index-1].category}}</span>
             </h2>
           </div>
           <Row class="color-line"></Row>
           <Row class="cms-card-content">
-            <div class="category-item" v-for="i in 8">
-              福州警方世界杯期间破获3起赌球案件
+            <div class="category-item" v-for="item in categoryData[index].data">
+              <nuxt-link :to="`/article/${item._id}`">
+                {{item.title}}
+              </nuxt-link>
+              <!-- <a :href="`/article/${item._id}`" target="_blank">fafafa</a> -->
             </div>
-          </Row>
-        </div>
-        </Col>
-        <Col span="8" style="padding:0px 3px 0px 3px">
-        <div class="cms-card">
-          <div class="cms-card-header">
-            <h2 class="cms-card-title">
-              <span>建筑</span>
-            </h2>
-          </div>
-          <Row class="color-line"></Row>
-          <Row class="cms-card-content">
-            <div class="category-item" v-for="i in 8">
-              福州警方世界杯期间破获3起赌球案件
-            </div>
-
-          </Row>
-        </div>
-        </Col>
-        <Col span="8" style="padding:0px 0px 0px 3px">
-        <div class="cms-card">
-          <div class="cms-card-header">
-            <h2 class="cms-card-title">
-              <span>工程</span>
-            </h2>
-          </div>
-          <Row class="color-line"></Row>
-          <Row class="cms-card-content">
-            <div class="category-item" v-for="i in 8">
-              福州警方世界杯期间破获3起赌球案件
-            </div>
-
-          </Row>
-        </div>
-        </Col>
-      </Row>
-
-      <Row style="margin-top:6px">
-        <Col span="8" style="padding-right:3px">
-        <div class="cms-card">
-          <div class="cms-card-header">
-            <h2 class="cms-card-title">
-              <span>财经</span>
-            </h2>
-          </div>
-          <Row class="color-line"></Row>
-          <Row class="cms-card-content">
-            <div class="category-item" v-for="i in 8">
-              福州警方世界杯期间破获3起赌球案件
-            </div>
-          </Row>
-        </div>
-        </Col>
-        <Col span="8" style="padding:0px 3px 0px 3px">
-        <div class="cms-card">
-          <div class="cms-card-header">
-            <h2 class="cms-card-title">
-              <span>建筑</span>
-            </h2>
-          </div>
-          <Row class="color-line"></Row>
-          <Row class="cms-card-content">
-            <div class="category-item" v-for="i in 8">
-              福州警方世界杯期间破获3起赌球案件
-            </div>
-
-          </Row>
-        </div>
-        </Col>
-        <Col span="8" style="padding:0px 0px 0px 3px">
-        <div class="cms-card">
-          <div class="cms-card-header">
-            <h2 class="cms-card-title">
-              <span>工程</span>
-            </h2>
-          </div>
-          <Row class="color-line"></Row>
-          <Row class="cms-card-content">
-            <div class="category-item" v-for="i in 8">
-              福州警方世界杯期间破获3起赌球案件
-            </div>
-
           </Row>
         </div>
         </Col>
       </Row>
 
       <!-- 文章热门 -->
-      <Row class="news-hot" style="margin-top:6px">
+      <Row class="news-hot" style="margin-top:16px">
         <Col span="16" style="padding-right:3px">
         <div class="cms-card">
           <div class="cms-card-header">
             <h2 class="cms-card-title">
-              <span>精选导读</span>
+              <span>企业新闻</span>
             </h2>
           </div>
           <Row class="color-line"></Row>
@@ -235,7 +156,9 @@ export default {
         { title: '河水暴涨', img: 'http://www.chinanews.com/sh/2018/07-02/U397P4T8D8553588F107DT20180703144039.jpg', url: '' }
       ],
       hots: ['河水暴涨', '河水暴涨', '河水暴涨', '河水暴涨', '河水暴涨', '河水暴涨', '河水暴涨', '河水暴涨', '河水暴涨', '河水暴涨'],
-      focusArr: []
+      focusArr: [],
+      // 分类信息的数据集合
+      categoryData: []
     }
   },
   components: {
@@ -245,6 +168,17 @@ export default {
   methods: {
     async focusList() {
 
+    },
+    async categoryGroupList() {
+      const params = {
+        url: 'category/group/list',
+        payload: {
+          category_ids: '["5b612f12b3ba0a06b78052eb", "5b612d3e745d83027cccdebd", "5b5d180c97b7d72044e299af","5b5c841797b7d72044e299a7","5b3c8bc70ba2a3db46a86a89","5b38cfba4072a66f599a7735"]'
+        }
+      }
+      const result = await this.post(params);
+      this.categoryData = result.data
+      console.log(this.categoryData)
     },
     async hotList() {
       const params = {
@@ -281,6 +215,7 @@ export default {
   },
   mounted() {
     this.hotList()
+    this.categoryGroupList()
   }
 
 }
