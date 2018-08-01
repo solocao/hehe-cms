@@ -159,8 +159,8 @@ var start = function () {
         switch (_context2.prev = _context2.next) {
           case 0:
             app = new __WEBPACK_IMPORTED_MODULE_1_koa___default.a();
-            host = process.env.HOST || '127.0.0.1';
-            port = process.env.PORT || 3000;
+            host = process.env.HOST || '0.0.0.0';
+            port = process.env.PORT || 8081;
 
             // Import and Set Nuxt.js options
 
