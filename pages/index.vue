@@ -348,8 +348,8 @@ body {
 
   // 精选导读
   .news-guide {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 16px;
+    margin-bottom: 16px;
 
     .c-title {
       font-size: 16px;
